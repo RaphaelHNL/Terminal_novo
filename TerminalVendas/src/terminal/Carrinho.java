@@ -16,7 +16,7 @@ public class Carrinho {
 	
 	public void listar_carrinho() {
 		if(produtos.isEmpty()) {
-			System.out.println("Carrinho Vazio.");
+			System.out.println("\nCarrinho Vazio.\n");
 		}else {
 			for (Veiculo v:produtos) {
 				System.out.println("Marca: "+v.getMarca());

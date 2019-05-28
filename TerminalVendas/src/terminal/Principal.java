@@ -29,19 +29,25 @@ public class Principal {
 	        x= in.nextInt();
         switch(x) {
         case 1:
-        	System.out.println("Digite o codigo do veiculo: ");
+        	System.out.println("Digite o codigo do veiculo a ser adicionado: ");
         	int escolha = in.nextInt();
         	Veiculo t = novo.procura_por_cod(escolha);
         	novo.carrinho.adicionar_carrinho(t);
-        	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+" Adicionado ao carrinho!");
+        	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+" Adicionado ao carrinho!\n");
         	System.out.print("\n\n");
         
         	break;
         case 2:
+        	System.out.println("Digite o codigo do veiculo a ser removido: ");
+        	int num = in.nextInt();
+        	Veiculo p = novo.procura_por_cod(num);
+        	novo.carrinho.remover_carrinho(p);
+        	System.out.println("Veiculo "+p.getMarca()+", "+p.getModelo()+", "+p.getAno()+", "+" Removido do carrinho!\n");
+        	System.out.print("\n\n");
         	
         	break;
         case 3:
-        	
+        	novo.carrinho.listar_carrinho();
         	break;
         case 4:
         	
