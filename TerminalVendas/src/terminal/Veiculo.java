@@ -1,37 +1,30 @@
 package terminal;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Veiculo {
 	
 	private String marca;
 	private String modelo;
 	private int ano;
 	private float preco;
-	private int quantidade;
 	private String tipo;
 	private int cod;
-	private String cores[] = new String[5];
+	List<String> cores = new LinkedList<String>();
 	
-	public Veiculo(String marca, String modelo, String tipo, int ano, String[] cores, float preco, int quantidade, int cod) {
+	public Veiculo(String marca, String modelo, String tipo, int ano, List<String> cores, float preco, int cod) {
 		
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
 		this.preco = preco;
 		this.tipo = tipo;
-		this.quantidade = quantidade;
 		this.cod = cod;
 		this.cores = cores;
 		
 	}
-	
-	public void adicionar() {
-		this.quantidade++;
-	}
-	
-	public void remover() {
-		this.quantidade--;
-	}
-	
+		
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
@@ -52,16 +45,16 @@ public class Veiculo {
 		this.ano = ano;
 	}
 	
+	public int getAno() {
+		return this.ano;
+	}
+	
 	public String getTipo() {
 		return this.tipo;
 	}
 	
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-	
-	public int getAno() {
-		return this.ano;
 	}
 	
 	public void setPreco(float preco) {
@@ -72,14 +65,7 @@ public class Veiculo {
 		return this.preco;
 	}
 	
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-	
-	public int getQuantidade() {
-		return this.quantidade;
-	}
-	
+
 	public void setCod() {
 		this.cod = 99999;
 	}
@@ -87,12 +73,9 @@ public class Veiculo {
 	public int getCod() {
 		return this.cod;
 	}
-	public void setCor(String[] cor) {
-		this.cores=cor;
-	}
 	
-	public String[] getCor(){
+	public List<String> getCores(){
 		return this.cores;
-	
-}
+	}
+
 }
