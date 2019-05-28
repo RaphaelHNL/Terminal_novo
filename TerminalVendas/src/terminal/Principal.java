@@ -14,6 +14,7 @@ public class Principal {
 		Scanner in = new Scanner(System.in);
 		Sistema novo = new Sistema();
 		int cod = 9999;
+		int venda = 1000;
 		ArrayList<String> cores = new ArrayList<String>();
 		int x;
         do {
@@ -22,7 +23,7 @@ public class Principal {
 	        System.out.println("3 - Mostrar Carrinho");
 	        System.out.println("4 - Listar Veículos");
 	        System.out.println("5 - Consultar Andamento do Seu Pedido");
-	        System.out.println("6 - Sair");
+	        System.out.println("6 - Finalizar compra/Sair");
 	        System.out.println("7 - Acesso Administrador");
 	        System.out.print("\n");
 	        System.out.print("Digite a opção desejada: ");
@@ -50,14 +51,24 @@ public class Principal {
         	novo.carrinho.listar_carrinho();
         	break;
         case 4:
-        	
         	novo.listar_veiculos();
         	break;
         case 5:
+        	System.out.println("Digite o codigo da venda: ");
+        	int k = in.nextInt();
+        	
         	
         	break;
         case 6:
-        	
+        	System.out.println("Deseja finalizar sua compra?(s/n)");
+        	String verif = in.next();
+        	if(verif.equals("s")) {
+        		novo.adicionar_vendas(novo.carrinho);
+        		System.out.println("Venda finalizada, código: "+venda);
+        		venda--;
+        	}else {
+        		System.out.println("Saindo...");
+        	}
         	break;
         case 7:
         	System.out.println("\n");
@@ -101,7 +112,7 @@ public class Principal {
            		  }while(x != 2);
            		  
            		  Veiculo auto = new Veiculo(marca, modelo, tipo, ano, cores, preco, cod);
-           		  novo.adicionar(auto);
+           		  novo.adicionar_veiculo(auto);
            		  System.out.println("Veículo de cod "+cod+" cadastrado!");
            		  cod--;
            		  

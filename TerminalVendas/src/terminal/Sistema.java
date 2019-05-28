@@ -5,14 +5,18 @@ import java.util.ArrayList;
 
 public class Sistema {
 	ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
-	ArrayList<String> vendas = new ArrayList();
+	ArrayList<Carrinho> vendas = new ArrayList<Carrinho>();
 	Carrinho carrinho = new Carrinho();
 	int cod=9999;
 	
 	
-	
-	public void adicionar(Veiculo novo) {
-		veiculos.add(novo);
+	public void adicionar_veiculo(Veiculo auto) {
+		veiculos.add(auto);
+		
+	}
+
+	public void adicionar_vendas(Carrinho novo) {
+		vendas.add(novo);
 	}
 	
 	public void listar_veiculos() {
@@ -46,6 +50,8 @@ public class Sistema {
 			}
 		return tmp;
 		}
+
+
 	}
 	
 
