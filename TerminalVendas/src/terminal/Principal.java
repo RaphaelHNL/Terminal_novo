@@ -14,7 +14,7 @@ public class Principal {
 		Scanner in = new Scanner(System.in);
 		Sistema novo = new Sistema();
 		int cod = 9999;
-		int venda = 1000;
+		int venda = novo.carrinho.cod;
 		ArrayList<String> cores = new ArrayList<String>();
 		int x;
         do {
@@ -30,6 +30,7 @@ public class Principal {
 	        x= in.nextInt();
         switch(x) {
         case 1:
+        	
         	System.out.println("Digite o codigo do veiculo a ser adicionado: ");
         	int escolha = in.nextInt();
         	Veiculo t = novo.procura_por_cod(escolha);
@@ -39,24 +40,34 @@ public class Principal {
         
         	break;
         case 2:
-        	System.out.println("Digite o codigo do veiculo a ser removido: ");
-        	int num = in.nextInt();
-        	Veiculo p = novo.procura_por_cod(num);
-        	novo.carrinho.remover_carrinho(p);
-        	System.out.println("Veiculo "+p.getMarca()+", "+p.getModelo()+", "+p.getAno()+", "+" Removido do carrinho!\n");
-        	System.out.print("\n\n");
+        	if(novo.carrinho.produtos.isEmpty()) {
+        		System.out.println("Não há veiculos no carrinho");
+        	}else {
+        		System.out.println("Digite o codigo do veiculo a ser removido: ");
+            	int num = in.nextInt();
+            	Veiculo p = novo.procura_por_cod(num);
+            	novo.carrinho.remover_carrinho(p);
+            	System.out.println("Veiculo "+p.getMarca()+", "+p.getModelo()+", "+p.getAno()+", "+" Removido do carrinho!\n");
+            	System.out.print("\n\n");
+        	}
+        	
         	
         	break;
         case 3:
         	novo.carrinho.listar_carrinho();
         	break;
         case 4:
-        	novo.listar_veiculos();
+        	if(novo.veiculos.isEmpty()) {
+        		System.out.println("\nLista de veiculos vazia\n");
+        	}else {
+        		novo.listar_veiculos();
+        	}
+        	
         	break;
         case 5:
         	System.out.println("Digite o codigo da venda: ");
         	int k = in.nextInt();
-        	
+        	System.out.println(novo.carrinho.prazo_entrega);
         	
         	break;
         case 6:
@@ -118,10 +129,18 @@ public class Principal {
            		  
                 	break;
                 case 2:
-                	
+                	System.out.println("Digite o codigo do veiculo a ser removido:");
+                	int l = in.nextInt();
+                	novo.veiculos.remove(novo.procura_por_cod(l));
+                	System.out.println("Veiculo removido!");
                 	break;
                 case 3:
-                	novo.listar_veiculos();
+                	if(novo.veiculos.isEmpty()) {
+                		System.out.println("Lista de veiculos vazia");
+                	}else {
+                		novo.listar_veiculos();
+                	}
+                	
                 	break;
                } 
         	}else {

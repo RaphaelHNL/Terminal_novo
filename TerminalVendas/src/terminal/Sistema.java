@@ -35,9 +35,7 @@ public class Sistema {
 		}
 	}
 	
-	public void listar_carrinho() {
-		
-	}
+
 	
 	public Veiculo procura_por_cod(int codigo) {
 		Veiculo tmp=null;
