@@ -36,12 +36,18 @@ public class Principal {
         	int escolha = in.nextInt();
         	System.out.println("Digite a cor do veiculo: ");
         	String color = in.next();
+        	System.out.println("A cor é fosca?(s/n)");
+			String fosca = in.next();
+			Veiculo t = novo.procura_por_cod(escolha);
+			if(fosca=="s") {
+			 t.fosca();
+			 }
         	
-        	Veiculo t = novo.procura_por_cod(escolha);
+        
         	if(t.verif_cor(color)) {
         		t.setCor(color);
             	novo.carrinho.adicionar_carrinho(t);
-            	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+t.getCor_escolhida()+" Adicionado ao carrinho!\n");
+            	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+t.getCor_escolhida()+", R$"+t.getPreco()+ " Adicionado ao carrinho!\n");
             	System.out.print("\n\n");
         	}else {
         		System.out.println("Cor indisponível!\n");
@@ -112,11 +118,13 @@ public class Principal {
            		  System.out.print("Digite o ano: ");
            		  int ano = in.nextInt();
            		  System.out.print("Digite o preço: ");
-           		  float preco = in.nextFloat();
+           		  double preco = in.nextDouble();
        			  System.out.print("Digite a quantidade: ");
      			  int qtd = in.nextInt();
      			  System.out.print("Digite a cor: ");
-      			  cores.add(in.next());
+     			  String cor = in.next();
+      			  cores.add(cor);
+      			  
            		  do {
            			  
            			  System.out.println("1 - Inserir outra cor");

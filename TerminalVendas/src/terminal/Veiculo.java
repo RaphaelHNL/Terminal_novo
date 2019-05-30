@@ -8,13 +8,13 @@ public class Veiculo {
 	private String marca;
 	private String modelo;
 	private int ano;
-	private float preco;
+	private double preco;
 	private String tipo;
 	private int cod;
 	private String cor_escolhida;
 	List<String> cores;
 	
-	public Veiculo(String marca, String modelo, String tipo, int ano, List<String> cores, float preco, int cod) {
+	public Veiculo(String marca, String modelo, String tipo, int ano, List<String> cores, double preco, int cod) {
 		this.cores = new LinkedList<String>();
 		this.marca = marca;
 		this.modelo = modelo;
@@ -58,11 +58,11 @@ public class Veiculo {
 		this.tipo = tipo;
 	}
 	
-	public void setPreco(float preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 	
-	public float getPreco() {
+	public double getPreco() {
 		return this.preco;
 	}
 	
@@ -95,6 +95,9 @@ public class Veiculo {
 	}
 	public String getCor_escolhida(){
 		return this.cor_escolhida;
+	}
+	public void fosca() {
+		this.setPreco((this.preco*2));
 	}
 	
 	
