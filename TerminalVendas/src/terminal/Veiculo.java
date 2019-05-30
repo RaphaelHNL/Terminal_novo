@@ -11,10 +11,11 @@ public class Veiculo {
 	private float preco;
 	private String tipo;
 	private int cod;
-	List<String> cores = new LinkedList<String>();
+	private String cor_escolhida;
+	List<String> cores;
 	
 	public Veiculo(String marca, String modelo, String tipo, int ano, List<String> cores, float preco, int cod) {
-		
+		this.cores = new LinkedList<String>();
 		this.marca = marca;
 		this.modelo = modelo;
 		this.ano = ano;
@@ -22,8 +23,8 @@ public class Veiculo {
 		this.tipo = tipo;
 		this.cod = cod;
 		this.cores = cores;
-		
 	}
+		
 		
 	public void setMarca(String marca) {
 		this.marca = marca;
@@ -77,5 +78,25 @@ public class Veiculo {
 	public List<String> getCores(){
 		return this.cores;
 	}
+	
+	public void setCor(String cor){
+		if(this.cores.contains(cor)){
+			this.cor_escolhida=cor;
+		}else {
+			System.out.println("Cor indisponível\n");
+		}
+	}
+	public boolean verif_cor(String cor) {
+		if(this.cores.contains(cor)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public String getCor_escolhida(){
+		return this.cor_escolhida;
+	}
+	
+	
 
 }

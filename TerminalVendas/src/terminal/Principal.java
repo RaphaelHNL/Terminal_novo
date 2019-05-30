@@ -11,13 +11,14 @@ import terminal.Sistema;
 
 public class Principal {
 	public static void main(String [] args) {
-		Scanner in = new Scanner(System.in);
+		
 		Sistema novo = new Sistema();
 		int cod = 9999;
 		int venda = novo.carrinho.cod;
-		ArrayList<String> cores = new ArrayList<String>();
 		int x;
         do {
+        	ArrayList<String> cores = new ArrayList<String>();
+        	Scanner in = new Scanner(System.in);
 			System.out.println("1 - Adicionar Veículo ao Carrinho");
 	        System.out.println("2 - Remover Veículo do Carrinho");
 	        System.out.println("3 - Mostrar Carrinho");
@@ -33,10 +34,19 @@ public class Principal {
         	
         	System.out.println("Digite o codigo do veiculo a ser adicionado: ");
         	int escolha = in.nextInt();
+        	System.out.println("Digite a cor do veiculo: ");
+        	String color = in.next();
+        	
         	Veiculo t = novo.procura_por_cod(escolha);
-        	novo.carrinho.adicionar_carrinho(t);
-        	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+" Adicionado ao carrinho!\n");
-        	System.out.print("\n\n");
+        	if(t.verif_cor(color)) {
+        		t.setCor(color);
+            	novo.carrinho.adicionar_carrinho(t);
+            	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+t.getCor_escolhida()+" Adicionado ao carrinho!\n");
+            	System.out.print("\n\n");
+        	}else {
+        		System.out.println("Cor indisponível!\n");
+        	}
+        	
         
         	break;
         case 2:
@@ -47,11 +57,10 @@ public class Principal {
             	int num = in.nextInt();
             	Veiculo p = novo.procura_por_cod(num);
             	novo.carrinho.remover_carrinho(p);
-            	System.out.println("Veiculo "+p.getMarca()+", "+p.getModelo()+", "+p.getAno()+", "+" Removido do carrinho!\n");
+            	System.out.println("Veiculo "+p.getMarca()+", "+p.getModelo()+", "+p.getAno()+", "+p.getCor_escolhida()+" Removido do carrinho!\n");
             	System.out.print("\n\n");
         	}
-        	
-        	
+        	        	
         	break;
         case 3:
         	novo.carrinho.listar_carrinho();
@@ -83,6 +92,7 @@ public class Principal {
         	break;
         case 7:
         	System.out.println("\n");
+        	System.out.println("Acesso restrito");
         	System.out.println("Digite a senha:");
         	int senha = in.nextInt();
         	if(senha==123) {
@@ -108,8 +118,9 @@ public class Principal {
      			  System.out.print("Digite a cor: ");
       			  cores.add(in.next());
            		  do {
+           			  
            			  System.out.println("1 - Inserir outra cor");
-           			  System.out.println("2 - Continuar cadastro");
+           			  System.out.println("2 - Continuar");
            			  System.out.print("Digite a opção: ");
            			  x = in.nextInt();
            			  System.out.print("\n");
@@ -129,10 +140,15 @@ public class Principal {
            		  
                 	break;
                 case 2:
-                	System.out.println("Digite o codigo do veiculo a ser removido:");
-                	int l = in.nextInt();
-                	novo.veiculos.remove(novo.procura_por_cod(l));
-                	System.out.println("Veiculo removido!");
+                	if(novo.veiculos.isEmpty()) {
+                		System.out.println("Não há veículos cadastrados no sistema\n");
+                	}else {
+                		System.out.println("Digite o codigo do veiculo a ser removido:");
+                    	int l = in.nextInt();
+                    	novo.veiculos.remove(novo.procura_por_cod(l));
+                    	System.out.println("Veiculo removido!");
+                	}
+                	
                 	break;
                 case 3:
                 	if(novo.veiculos.isEmpty()) {

@@ -28,7 +28,7 @@ public class Carrinho {
 				System.out.println("Ano: " + v.getAno());
 				System.out.println("Tipo: " + v.getTipo());
 				System.out.println("Código: " + v.getCod());
-				System.out.println("Cor: " + v.getCores());
+				System.out.println("Cor: " + v.getCor_escolhida());
 			}
 		}
 
