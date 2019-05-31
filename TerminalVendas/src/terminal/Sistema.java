@@ -25,6 +25,7 @@ public class Sistema {
 			System.out.println("Modelo: "+v.getModelo());
 			System.out.println("Ano: "+v.getAno());
 			System.out.println("Tipo: "+v.getTipo());
+			System.out.println("Preço: "+v.getPreco());
 			System.out.println("Código: "+v.getCod());
 			System.out.println("Cores: ");
 			for (String cor:v.cores) {
@@ -35,7 +36,23 @@ public class Sistema {
 		}
 	}
 	
+	public int getQtd(int cod) {
+		int count=0;
+		for(Veiculo h:veiculos) {
+			if(h.getCod()==cod) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public void listar_compras() {
+		for (Carrinho k:vendas) {
+			k.listar_carrinho();
 
+	}
+	}
+	
 	
 	public Veiculo procura_por_cod(int codigo) {
 		Veiculo tmp=null;

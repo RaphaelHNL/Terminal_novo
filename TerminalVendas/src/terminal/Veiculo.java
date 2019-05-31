@@ -96,10 +96,6 @@ public class Veiculo {
 	public String getCor_escolhida(){
 		return this.cor_escolhida;
 	}
-	public void fosca() {
-		this.setPreco((this.preco*2));
-	}
-	
-	
+		
 
 }

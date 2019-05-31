@@ -17,6 +17,8 @@ public class Principal {
 		int venda = novo.carrinho.cod;
 		int x;
         do {
+        	Veiculo t=null;
+        	String teste="";
         	ArrayList<String> cores = new ArrayList<String>();
         	Scanner in = new Scanner(System.in);
 			System.out.println("1 - Adicionar Veículo ao Carrinho");
@@ -31,29 +33,30 @@ public class Principal {
 	        x= in.nextInt();
         switch(x) {
         case 1:
-        	
-        	System.out.println("Digite o codigo do veiculo a ser adicionado: ");
-        	int escolha = in.nextInt();
-        	System.out.println("Digite a cor do veiculo: ");
-        	String color = in.next();
-        	System.out.println("A cor é fosca?(s/n)");
-			String fosca = in.next();
-			Veiculo t = novo.procura_por_cod(escolha);
-			if(fosca=="s") {
-			 t.fosca();
-			 }
-        	
-        
-        	if(t.verif_cor(color)) {
-        		t.setCor(color);
-            	novo.carrinho.adicionar_carrinho(t);
-            	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+t.getCor_escolhida()+", R$"+t.getPreco()+ " Adicionado ao carrinho!\n");
-            	System.out.print("\n\n");
+        	if(novo.carrinho.tamanho_carrinho()>=10) {
+        		System.out.println("Quantidade limite de produtos atingida\n");
         	}else {
-        		System.out.println("Cor indisponível!\n");
+        		System.out.println("Digite o codigo do veiculo a ser adicionado: ");
+            	int escolha = in.nextInt();
+            	System.out.println("Digite a cor do veiculo: ");
+            	String color = in.next();
+            	t = novo.procura_por_cod(escolha);
+            	System.out.print("A cor é fosca?(s/n): ");
+            	teste=in.next();
+            
+            	if(t.verif_cor(color)) {
+            		t.setCor(color);
+                	novo.carrinho.adicionar_carrinho(t);
+                	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+t.getCor_escolhida()+", R$"+t.getPreco()+ " Adicionado ao carrinho!\n");
+                	System.out.print("\n\n");
+            	}else {
+            		System.out.println("Cor indisponível!\n");
+            	}
         	}
         	
+        	
         
+        	
         	break;
         case 2:
         	if(novo.carrinho.produtos.isEmpty()) {
@@ -82,7 +85,7 @@ public class Principal {
         case 5:
         	System.out.println("Digite o codigo da venda: ");
         	int k = in.nextInt();
-        	System.out.println(novo.carrinho.prazo_entrega);
+        	System.out.println(novo.carrinho.prazoEntrega());
         	
         	break;
         case 6:
@@ -92,8 +95,7 @@ public class Principal {
         		novo.adicionar_vendas(novo.carrinho);
         		System.out.println("Venda finalizada, código: "+venda);
         		venda--;
-        	}else {
-        		System.out.println("Saindo...");
+        		
         	}
         	break;
         case 7:
@@ -102,9 +104,9 @@ public class Principal {
         	System.out.println("Digite a senha:");
         	int senha = in.nextInt();
         	if(senha==123) {
-        		System.out.println("1 - Cadastrar automóveis");
-                System.out.println("2 - Remover veículo do estoque");
-                System.out.println("3 - Mostrar estoque");
+        		System.out.println("1 - Cadastrar automóveis no sistema");
+                System.out.println("2 - Remover veículo do sistema");
+                System.out.println("3 - Listar compras realizadas");
                 System.out.print("\nDigite a opção desejada: ");
                 int adm = in.nextInt();
                 switch(adm) {
@@ -159,10 +161,10 @@ public class Principal {
                 	
                 	break;
                 case 3:
-                	if(novo.veiculos.isEmpty()) {
-                		System.out.println("Lista de veiculos vazia");
+                	if(novo.vendas.isEmpty()) {
+                		System.out.println("Lista de compras vazia");
                 	}else {
-                		novo.listar_veiculos();
+                		novo.listar_compras();
                 	}
                 	
                 	break;
@@ -182,4 +184,10 @@ public class Principal {
        
 	}while(x!=9);		
 }
+	public static void teste(int x) throws Exceptions {
+		if (x < 0) {
+			Exceptions objExc = new Exceptions();
+			throw objExc;
+		}
+	}
 }

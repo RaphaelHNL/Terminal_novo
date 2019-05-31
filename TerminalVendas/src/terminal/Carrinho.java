@@ -7,7 +7,7 @@ public class Carrinho {
 
 	ArrayList<Veiculo> produtos = new ArrayList<Veiculo>();
 	int cod = random();
-	String prazo_entrega = "3 dias";
+
 
 	public void adicionar_carrinho(Veiculo novo) {
 		produtos.add(novo);
@@ -17,6 +17,9 @@ public class Carrinho {
 		produtos.remove(novo);
 	}
 
+	
+	
+	
 	public void listar_carrinho() {
 		if (produtos.isEmpty()) {
 			System.out.println("\nCarrinho Vazio.\n");
@@ -41,4 +44,15 @@ public class Carrinho {
 		return k;
 
 	}
+	
+	public int tamanho_carrinho() {
+		return produtos.size(); 
+	}
+	
+	public String prazoEntrega() {
+		String p = (3*produtos.size())+" dias úteis";
+		return p;
+	}
+		
+	
 }
