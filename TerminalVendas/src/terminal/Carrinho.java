@@ -11,6 +11,7 @@ public class Carrinho {
 
 	public void adicionar_carrinho(Veiculo novo) {
 		produtos.add(novo);
+		System.out.println("\nCadastrado!");
 	}
 
 	public void remover_carrinho(Veiculo novo) {
@@ -48,6 +49,8 @@ public class Carrinho {
 	public int tamanho_carrinho() {
 		return produtos.size(); 
 	}
+	
+	
 	
 	public String prazoEntrega() {
 		String p = (3*produtos.size())+" dias úteis";

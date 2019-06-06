@@ -93,6 +93,7 @@ public class Veiculo {
 			return false;
 		}
 	}
+	
 	public String getCor_escolhida(){
 		return this.cor_escolhida;
 	}

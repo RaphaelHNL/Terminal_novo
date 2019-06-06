@@ -18,7 +18,6 @@ public class Principal {
 		int x;
         do {
         	Veiculo t=null;
-        	String teste="";
         	ArrayList<String> cores = new ArrayList<String>();
         	Scanner in = new Scanner(System.in);
 			System.out.println("1 - Adicionar Veículo ao Carrinho");
@@ -33,28 +32,34 @@ public class Principal {
 	        x= in.nextInt();
         switch(x) {
         case 1:
-        	if(novo.carrinho.tamanho_carrinho()>=10) {
-        		System.out.println("Quantidade limite de produtos atingida\n");
+        	
+        	if(novo.carrinho.tamanho_carrinho()>=10 || novo.veiculos.size()==0) {
+        		System.out.println("Quantidade limite de produtos atingida ou não há produtos cadastrados o sistema\n");
         	}else {
         		System.out.println("Digite o codigo do veiculo a ser adicionado: ");
             	int escolha = in.nextInt();
             	System.out.println("Digite a cor do veiculo: ");
             	String color = in.next();
             	t = novo.procura_por_cod(escolha);
-            	System.out.print("A cor é fosca?(s/n): ");
-            	teste=in.next();
+            	System.out.print("A cor é fosca?(1-sim/2-não): ");
+            	int teste=in.nextInt();
             
             	if(t.verif_cor(color)) {
             		t.setCor(color);
+            		if (teste==1) {
+            			t.setPreco(t.getPreco()*1.03);
+            		}
                 	novo.carrinho.adicionar_carrinho(t);
                 	System.out.println("Veiculo "+t.getMarca()+", "+t.getModelo()+", "+t.getAno()+", "+t.getCor_escolhida()+", R$"+t.getPreco()+ " Adicionado ao carrinho!\n");
                 	System.out.print("\n\n");
             	}else {
             		System.out.println("Cor indisponível!\n");
             	}
+            	System.out.println(teste);
+            	
         	}
         	
-        	
+        		
         
         	
         	break;
